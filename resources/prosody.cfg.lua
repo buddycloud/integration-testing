@@ -14,7 +14,6 @@ modules_enabled = {
 		"register";
 		"admin_adhoc"; 
 		"posix";
-                "bosh";
 };
 
 allow_registration = true;
