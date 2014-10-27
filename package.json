@@ -1,0 +1,24 @@
+{
+  "name": "integration-tests",
+  "version": "0.1.0",
+  "description": "Integration tests for a Buddycloud setup",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:buddycloud/integration-testing.git"
+  },
+  "keywords": [
+    "integration",
+    "test",
+    "xmpp"
+  ],
+  "author": "Lloyd Watkin <lloyd@evilprofessor.co.uk>",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/buddycloud/integration-testing/issues"
+  },
+  "homepage": "https://github.com/buddycloud/integration-testing"
+}
