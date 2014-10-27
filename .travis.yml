@@ -4,8 +4,10 @@ node_js:
 addons:
   postgresql: "9.3"
 before_install:
-  - sudo apt-get -y update
-  - sudo apt-get -y upgrade
+  - export DEBIAN_FRONTEND=noninteractive
+  - sudo rm -f /etc/rsyslog.conf
+  - sudo apt-get -yq update
+  - sudo apt-get -yq upgrade
   - sudo apt-get install -y libicu-dev prosody luarocks openjdk-7-jdk
   - sudo luarocks install -y luabitop
   - sudo luarocks install -y luabitop
