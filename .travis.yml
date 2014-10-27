@@ -1,15 +1,21 @@
 language: node_js
 node_js:
   - "0.10"
+addons:
+  postgresql: "9.3"
 before_install:
-  - "sudo apt-get install libicu-dev prosody luarocks"
-  - "sudo luarocks install luabitop"
+  - sudo apt-get install libicu-dev prosody luarocks openjdk-7-jdk
+  - sudo luarocks install luabitop
   # Workaround for a permissions issue with Travis virtual machine images
   # that breaks Python's multiprocessing:
   # https://github.com/travis-ci/travis-cookbooks/issues/155
   - sudo rm -rf /dev/shm
   - sudo ln -s /run/shm /dev/shm
-  - sudo cp test/resources/prosody.cfg.lua /etc/prosody/prosody.cfg.lua
+  - sudo cp resources/prosody.cfg.lua /etc/prosody/prosody.cfg.lua
   - sudo service prosody stop
+  - resources/setup-buddycloud.sh
+  - resources/setup-database.sh
+  - resources/run-buddycloud.sh
+
 before_script:
   - npm install -g grunt-cli
