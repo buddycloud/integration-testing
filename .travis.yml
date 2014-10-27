@@ -4,6 +4,8 @@ node_js:
 addons:
   postgresql: "9.3"
 before_install:
+  - sudo apt-get update
+  - sudo apt-get upgrade
   - sudo apt-get install libicu-dev prosody luarocks openjdk-7-jdk
   - sudo luarocks install luabitop
   # Workaround for a permissions issue with Travis virtual machine images
