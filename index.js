@@ -51,6 +51,7 @@ var startChannelServer = function(server, done) {
 
 before(function(done) {
     log('Running tests start function')
+    this.timeout(3000)
     forEach(servers, function(server) {
         startChannelServer(server, this.async())
     }, function() {
@@ -60,6 +61,7 @@ before(function(done) {
 
 after(function(done) {
     log('Running tests completion function')
+    this.timeout(3000)
     forEach(servers, function(server) {
         var done = this.async()
         log('Stopping \'' + server + '\'')

@@ -4,7 +4,7 @@
   "description": "Integration tests for a Buddycloud setup",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha index.js"
+    "test": "./node_modules/.bin/mocha --timeout 15000 index.js"
   },
   "repository": {
     "type": "git",
