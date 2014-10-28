@@ -2,3 +2,5 @@ node_modules
 npm-debug.log
 .brackets.json
 buddycloud-server-java
+resources/configuration/development
+.DS_Store

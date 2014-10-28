@@ -19,6 +19,8 @@ before_install:
   - resources/setup-buddycloud.sh
   - resources/setup-database.sh
   - resources/run-buddycloud.sh
-
+env:
+  global:
+    - NODE_ENV=travisci
 before_script:
   - npm install -g grunt-cli
