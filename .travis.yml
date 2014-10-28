@@ -18,7 +18,6 @@ before_install:
   - chmod 755 ./resources/*.sh
   - resources/setup-buddycloud.sh
   - resources/setup-database.sh
-  - resources/run-buddycloud.sh
 env:
   global:
     - NODE_ENV=travisci

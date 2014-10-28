@@ -1,8 +1,10 @@
 #! /bin/bash
 
-psql -c 'create database enterprise;' -U postgres
-psql -c 'create database voyager;' -U postgres
-psql -c 'create database borg;' -U postgres
+[ -z "$DATABASE_HOST" ] && export DATABASE_HOST=localhost
+echo $DATABASE_HOST
+psql -c 'create database enterprise;' -U postgres -h $DATABASE_HOST
+psql -c 'create database voyager;' -U postgres -h $DATABASE_HOST
+psql -c 'create database borg;' -U postgres -h $DATABASE_HOST
 
 databases=( enterprise voyager borg)
 files=$(find ./buddycloud-server-java/postgres -name "upgrade*.sql")
