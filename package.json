@@ -4,7 +4,7 @@
   "description": "Integration tests for a Buddycloud setup",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "./node_modules/.bin/mocha index.js"
   },
   "repository": {
     "type": "git",
