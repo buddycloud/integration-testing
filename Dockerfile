@@ -24,5 +24,7 @@ ADD resources/prosody.cfg.lua /etc/prosody/prosody.cfg.lua
 
 EXPOSE 5222 5432
 
-RUN service prosody restart
-RUN service postgresql restart
+RUN /etc/init.d/prosody start
+RUN /etc/init.d/postgresql restart
+
+ENTRYPOINT sudo tailf /var/log/prosody/prosody.log
