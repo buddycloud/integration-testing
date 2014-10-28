@@ -28,6 +28,8 @@
     "mocha": "^2.0.1",
     "node-xmpp-client": "^1.0.0-alpha15",
     "should": "^4.1.0",
+    "xmpp-ftw": "^1.16.3",
+    "xmpp-ftw-buddycloud": "^1.15.0",
     "yadda": "^0.11.2"
   }
 }

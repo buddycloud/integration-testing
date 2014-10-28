@@ -29,7 +29,7 @@ You will need:
 You'll then need to set up some databases and configuration files:
 
 * To install the channel server run the `setup-buddycloud.sh` script in the __resources__ directory
-* Install the databases, run `setup-database.sh` in the __resources__ directory. If your postgres server is not on **localhost** then set an environment variable of `DATABASE_HOST` to point to its location
+* Install the databases, run `setup-database.sh` in the __resources__ directory. If your postgres server is not on **localhost** then set an environment variable of `DATABASE_HOST` to point to its location, additionally a non-standard port number use `DATABASE_PORT`
 * You need to set up some configuration files. See the [**travisci** examples](https://github.com/buddycloud/integration-testing/tree/master/resources/configuration/travisci), you will need to create a set of files in a directory named after your `NODE_ENV` environment variable (defaults to __development__)
 
 Then...
@@ -47,6 +47,8 @@ __Note:__ To see more details on the running tests run as follows:
 ```
 DEBUG=tests* npm test
 ```
+
+If not using **localhost** or a **different xmpp client port number** then you'll need to set `XMPP_HOST` and `XMPP_PORT` environment variables.
 
 # Writing tests
 

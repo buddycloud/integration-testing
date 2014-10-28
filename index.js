@@ -17,7 +17,7 @@ var stepDefinitions = function() {
     return libraries
 }()
 
-var environment = /*process.env.NODE_ENV ||*/ 'travisci'
+var environment = process.env.NODE_ENV || 'development'
 var pids = {}
 var servers = [ 'enterprise', 'voyager', 'borg' ]
 
@@ -50,16 +50,16 @@ var startChannelServer = function(server, done) {
 }
 
 before(function(done) {
-   console.log('before')
-   forEach(servers, function(server) {
-       startChannelServer(server, this.async())
-   }, function() {
-       done()
-   })
+    log('Running tests start function')
+    forEach(servers, function(server) {
+        startChannelServer(server, this.async())
+    }, function() {
+        done()
+    })
 })
 
 after(function(done) {
-    console.log('after')
+    log('Running tests completion function')
     forEach(servers, function(server) {
         var done = this.async()
         log('Stopping \'' + server + '\'')
