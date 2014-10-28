@@ -14,7 +14,8 @@ before_install:
   - sudo rm -rf /dev/shm
   - sudo ln -s /run/shm /dev/shm
   - sudo cp resources/prosody.cfg.lua /etc/prosody/prosody.cfg.lua
-  - sudo service prosody stop
+  - sudo service prosody restart
+  - sudo service postgresql restart
   - chmod 755 ./resources/*.sh
   - resources/setup-buddycloud.sh
   - resources/setup-database.sh

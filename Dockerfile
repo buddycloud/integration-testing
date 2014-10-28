@@ -25,4 +25,4 @@ ADD resources/prosody.cfg.lua /etc/prosody/prosody.cfg.lua
 EXPOSE 5222 5432
 
 RUN service prosody restart
-RUN service postgres restart
+RUN service postgresql restart
