@@ -44,6 +44,9 @@ VirtualHost "enterprise.sf"
 Component "channels.enterprise.sf"
 	component_secret = "mysecretcomponentpassword"
 
+Component "topics.enterprise.sf"
+	component_secret = "mysecretcomponentpassword"
+
 VirtualHost "voyager.sf"
 	enabled = true
     ssl = {
