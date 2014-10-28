@@ -36,7 +36,12 @@ This project also has an [automated docker build](https://registry.hub.docker.co
 docker run -d --name buddycloud-integration-tests -p 5432:5432 -p 5222:5222 buddycloud/integration-testing
 ```
 
-If you are running postgresql or an XMPP server locally then you'll probably want to change those port mappings and use the `XMPP_PORT` and `DATABASE_PORT` environment variables (no doubt you'll also need to set `DATABASE_HOST` too).
+If you are running postgresql or an XMPP server locally then you'll probably want to change those port mappings and use the `XMPP_PORT` and `DATABASE_PORT` environment variables.
+
+You'll also need to set:
+- `export DATABASE_HOST=localdocker` (or similar)
+- `export DATABASE_USER=docker`
+- `export DATABASE_PASSWORD=docker`
 
 ### Back to it....
 
