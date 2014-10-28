@@ -2,16 +2,11 @@ var Yadda = require('yadda')
   , glob = require('glob')
   , spawn = require('child_process').spawn
   , debug = require('debug')
-  , log   = debug('index')
+  , log   = debug('tests:index')
   , forEach = require('async-foreach').forEach
 
 Yadda.plugins.mocha.StepLevelPlugin.init()
 
-var path = process.env.PATH.split(':')
-path.unshift(__dirname + '/resources/configuration')
-process.env.PATH = path.join(':')
-
-console.log(path.join(':'))
 var stepDefinitions = function() {
     var libraries = []
     var stepsPath = process.cwd() + '/steps/**/*.js'
@@ -26,10 +21,9 @@ var environment = /*process.env.NODE_ENV ||*/ 'travisci'
 var pids = {}
 var servers = [ 'enterprise', 'voyager', 'borg' ]
 
-
 var startChannelServer = function(server, done) {
    log('Starting \'' + server + '\'')
-   var serverLog = debug('server-' + server)
+   var serverLog = debug('tests:server-' + server)
    var child = spawn(
        'java',
        [

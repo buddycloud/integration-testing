@@ -42,6 +42,12 @@ npm test
 # profit
 ```
 
+__Note:__ To see more details on the running tests run as follows:
+
+```
+DEBUG=tests* npm test
+```
+
 # Writing tests
 
 TBC
