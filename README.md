@@ -19,12 +19,26 @@ Primarily this setup is designed to be run on [travisci](http://travis-ci.org) o
 
 ## Running locally
 
+### Manually
+
 You will need:
 
 * An XMPP server set up. We recommend [Prosody](http://prosody.im), an example configuration can be found [here](https://github.com/buddycloud/integration-testing/blob/master/resources/prosody.cfg.lua)
 * [Node.js](http://nodejs.org/) installed (version 0.10 or greater)
 * [PostgreSQL 9.3](http://www.postgresql.org/)
 * [Java JDK](http://openjdk.java.net/)
+
+### Using Docker
+
+This project also has an [automated docker build](https://registry.hub.docker.com/u/buddycloud/integration-testing/) which you can use, rather than installing all the parts onto your system. To use the docker image run the following:
+
+```
+docker run -d --name buddycloud-integration-tests -p 5432:5432 -p 5222:5222 buddycloud/integration-testing
+```
+
+If you are running postgresql or an XMPP server locally then you'll probably want to change those port mappings and use the `XMPP_PORT` and `DATABASE_PORT` environment variables (no doubt you'll also need to set `DATABASE_HOST` too).
+
+### Back to it....
 
 You'll then need to set up some databases and configuration files:
 
