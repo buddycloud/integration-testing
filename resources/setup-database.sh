@@ -7,7 +7,7 @@ psql -c 'create database borg;' -U postgres
 cd buddycloud-server-java
 
 databases=( enterprise voyager borg)
-files=`find ./postgres --name "upgrade*.sql"`
+files=`find ./postgres -name "upgrade*.sql"`
 
 for i in "${databases[@]}"
 do
