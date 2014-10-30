@@ -32,8 +32,14 @@ var startChannelServer = function(server, done) {
        ],
        { cwd: __dirname + '/resources/configuration/' + environment + '/' + server, env: process.env }
    )
+   var started = false
    child.stdout.on('data', function(data) {
       serverLog(data.toString('utf8'))
+      if ((false === started) &&
+          (-1 !== data.toString('utf8').indexOf('ready to accept packages'))) {
+          started = true
+          done()
+      }   
     })
    
     child.stderr.on('error', function(data) {
@@ -45,8 +51,6 @@ var startChannelServer = function(server, done) {
       done('error')
     })
     pids[server] = child
-    /* TODO: Watching incoming stdout for server started message and then done() */
-    setTimeout(function() { done() }, 2000)
 }
 
 before(function(done) {
@@ -55,6 +59,7 @@ before(function(done) {
     forEach(servers, function(server) {
         startChannelServer(server, this.async())
     }, function() {
+        log('All channel servers started')
         done()
     })
 })
