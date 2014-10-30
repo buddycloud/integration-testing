@@ -1,5 +1,3 @@
-var extend = require('extend')
-
 var serverMap = {
     'enterprise': {
         domain: 'enterprise.sf',

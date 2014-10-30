@@ -6,14 +6,15 @@ module.exports = (function() {
     .given('I connect as the $server\'s $crew', function(server, user, next) {
        helper.getConnection(user, server, function(error, connection) {
            if (error) return next(error)
-           helper.setLastConnection(connection)
            next()
        })
     })
     .given('I run disco#items against the server', function(next) {
-        helper.buddycloud.discoverItems({}, function(error, items) {
+        var payload = { of: helper.getLastConnection().jid.domain }
+        var params = this.params
+        helper.buddycloud.discoverItems(payload, function(error, items) {
             if (error) return next(error)
-            this.params.disco = { items: items}
+            params.disco = { items: items}
             next()
         })
     })
@@ -33,7 +34,25 @@ module.exports = (function() {
         })
     })
     .then('I expect it to see the correct disco#info', function(next) {
-        console.log(this.params.disco.channelServer)
+        var info = this.params.disco.channelServer
+        var checkFor = function(kind, type, category) {
+            var found = false
+            info.some(function(entry) {
+                var field = !!category ? 'type' : 'var'
+                if ((kind === entry.kind) && (type === entry[field]) && (category === entry.category)) {
+                    return found = true
+                }
+            })
+            if (!found) {
+                next('Missing \'disco#info\' entry')
+            }
+        }
+        checkFor('identity', 'channels', 'pubsub')
+        checkFor('identity', 'inbox', 'pubsub')
+        checkFor('feature', 'http://jabber.org/protocol/disco#info')
+        checkFor('feature', 'jabber:iq:register')
+        checkFor('feature', 'http://jabber.org/protocol/disco#items')
+        checkFor('feature', 'jabber:iq:search')
         next()
     })
 })()
