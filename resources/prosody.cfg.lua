@@ -36,12 +36,13 @@ log = {
 	{ levels = { "error" }; to = "syslog";  };
 }
 
+ssl = {
+    key = "/etc/prosody/certs/localhost.key";
+    certificate = "/etc/prosody/certs/localhost.cert";
+}
+
 VirtualHost "enterprise.sf"
 	enabled = true
-    ssl = {
-		key = "/etc/prosody/certs/example.com.key";
-		certificate = "/etc/prosody/certs/example.com.crt";
-	}
 
 Component "channels.enterprise.sf"
 	component_secret = "mysecretcomponentpassword"
@@ -51,20 +52,12 @@ Component "topics.enterprise.sf"
 
 VirtualHost "voyager.sf"
 	enabled = true
-    ssl = {
-		key = "/etc/prosody/certs/example.com.key";
-		certificate = "/etc/prosody/certs/example.com.crt";
-	}
 
 Component "channels.voyager.sf"
 	component_secret = "mysecretcomponentpassword"
 
 VirtualHost "borg.collective"
 	enabled = true
-    ssl = {
-		key = "/etc/prosody/certs/example.com.key";
-		certificate = "/etc/prosody/certs/example.com.crt";
-	}
 
 Component "hive.borg.collective"
 	component_secret = "mysecretcomponentpassword"

@@ -21,10 +21,9 @@ USER root
 # Setup XMPP-layer
 RUN apt-get install -y --no-install-recommends prosody lua-zlib lua-cyrussasl lua-sec
 ADD resources/prosody.cfg.lua /etc/prosody/prosody.cfg.lua
+RUN mkdir -p /var/run/prosody
+RUN chown prosody /var/run/prosody
 
 EXPOSE 5222 5432
 
-RUN /etc/init.d/prosody start
-RUN /etc/init.d/postgresql restart
-
-ENTRYPOINT sudo tailf /var/log/prosody/prosody.log
+ENTRYPOINT prosodyctl start && service postgresql start && tailf /var/log/prosody/prosody.log
