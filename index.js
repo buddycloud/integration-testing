@@ -82,8 +82,9 @@ new Yadda.FeatureFileSearch('./features').each(function(file) {
     var yadda = new Yadda.Yadda(stepDefinitions)
 
     scenarios(feature.scenarios, function(scenario) {
+      var context = { params: {} }
       steps(scenario.steps, function(step, done) {
-        yadda.yadda(step, done)
+        yadda.yadda(step, context, done)
       })
     })
   })
