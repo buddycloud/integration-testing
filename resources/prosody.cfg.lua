@@ -25,6 +25,7 @@ pidfile = "/var/run/prosody/prosody.pid";
 c2s_require_encryption = false
 
 interfaces = { "0.0.0.0" };
+component_interface = "0.0.0.0";
 
 authentication = "internal_plain"
 

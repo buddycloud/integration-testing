@@ -33,7 +33,7 @@ You will need:
 This project also has an [automated docker build](https://registry.hub.docker.com/u/buddycloud/integration-testing/) which you can use, rather than installing all the parts onto your system. To use the docker image run the following:
 
 ```
-docker run -d --name buddycloud-integration-tests -p 5432:5432 -p 5222:5222 buddycloud/integration-testing
+docker run -d --name buddycloud-integration-tests -p 5432:5432 -p 5222:5222 -p 5347:5347 buddycloud/integration-testing
 ```
 
 If you are running postgresql or an XMPP server locally then you'll probably want to change those port mappings and use the `XMPP_PORT` and `DATABASE_PORT` environment variables.

@@ -24,6 +24,6 @@ ADD resources/prosody.cfg.lua /etc/prosody/prosody.cfg.lua
 RUN mkdir -p /var/run/prosody
 RUN chown prosody /var/run/prosody
 
-EXPOSE 5222 5432
+EXPOSE 5222 5432 5347
 
 ENTRYPOINT prosodyctl start && service postgresql start && tailf /var/log/prosody/prosody.log
