@@ -84,11 +84,25 @@ manager = {
             return true
         }
         this.tracking[id].callback(stanza)
+        delete this.tracking[id]
         return true
+    },
+    getJidType: function(type) {
+        switch (type) {
+            case 'full':
+                return this.client.jid.user + '@' +
+                    this.client.jid.domain + '/' +
+                    this.client.jid.resource
+            case 'bare':
+                return this.client.jid.user + '@' + this.client.jid.domain
+            case 'domain':
+                return this.client.jid.domain
+        }
     }
 }
 var buddycloud = new Buddycloud()
 buddycloud.init(manager)
+buddycloud.setDiscoveryTimeout(300)
 
 var getConnection = function(user, server, callback, registered) {
     var options = userMap.getDetails(user, server)

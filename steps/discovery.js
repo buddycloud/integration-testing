@@ -3,12 +3,6 @@ var library = require('yadda').localisation.English.library
 
 module.exports = (function() {
   return library()
-    .given('I connect as the $server\'s $crew', function(server, user, next) {
-       helper.getConnection(user, server, function(error, connection) {
-           if (error) return next(error)
-           next()
-       })
-    })
     .given('I run disco#items against the server', function(next) {
         var payload = { of: helper.getLastConnection().jid.domain }
         var params = this.params

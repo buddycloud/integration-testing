@@ -11,8 +11,8 @@ PGPASSWORD="$DATABASE_PASSWORD" psql -c 'create database enterprise;'  -p $DATAB
 PGPASSWORD="$DATABASE_PASSWORD" psql -c 'create database voyager;' -p $DATABASE_PORT -h $DATABASE_HOST -U $DATABASE_USER 
 PGPASSWORD="$DATABASE_PASSWORD" psql -c 'create database borg;' -p $DATABASE_PORT -h $DATABASE_HOST -U $DATABASE_USER 
 
-databases=( enterprise voyager borg)
-files=$(find ./buddycloud-server-java/postgres -name "upgrade*.sql")
+databases=( enterprise voyager borg )
+files=$(find ./buddycloud-server-java/postgres -name "upgrade*.sql" | sort -n -t "." -k3)
 
 for i in "${databases[@]}"
 do
