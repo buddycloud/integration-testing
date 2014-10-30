@@ -14,7 +14,7 @@ RUN /etc/init.d/postgresql start && psql --command "CREATE USER docker WITH SUPE
     createdb -O docker docker
 
 RUN echo "host all all 0.0.0.0/0 md5" >> /etc/postgresql/9.3/main/pg_hba.conf
-RUN echo "listen_addresses='*'" >> /etc/postgresql/9.3/main/postgresql.conf
+RUN echo "listen_addresses='0.0.0.0'" >> /etc/postgresql/9.3/main/postgresql.conf
 
 USER root
 
